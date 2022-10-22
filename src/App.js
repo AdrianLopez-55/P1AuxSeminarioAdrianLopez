@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import { BrowserRouter } from "react-router-dom";
+import { RoutesLayoutLopez }   from "./routes/RoutesLayoutLopez";
 import './App.css';
+//import { NavbarLopez } from "./routes/NavbarLopez";
+import React from "react";
+
+export const userContext = React.createContext()
 
 function App() {
+  const user = {
+    name: 'Adrian López Espinoza',
+    img: "https://cdn.glitch.com/3c3ffadc-3406-4440-bb95-d40ec8fcde72%2FNelsonMuntz.png?1497567511185"
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <userContext.Provider value={user}>
+        <BrowserRouter>
+          <RoutesLayoutLopez />
+        </BrowserRouter>
+      </userContext.Provider>
+
     </div>
   );
 }
